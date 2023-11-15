@@ -15,8 +15,11 @@ func main() {
 
 	//textFromFile := readTextFromFile(TEXT_FILE_NAME)
 	//fmt.Println(textFromFile)
+
+	// os.Remove(TEXT_FILE_NAME) // удаление файла
 }
 
+// функция для записи текста в новый файл или в существующий.
 func writeTextToFile(filename, str string) {
 	byteToWrite := []byte(str)
 	if err := os.WriteFile(filename, byteToWrite, 0644); err != nil {
