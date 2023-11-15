@@ -13,23 +13,25 @@ type Person struct {
 }
 
 func main() {
-	person := Person{
-		Name:  "Иван",
-		Age:   30,
-		Title: "Инженер",
-	}
+	people := Person{Name: "Иван", Age: 30, Title: "Инженер"}
+
 	// Открываем файл для записи
-	file, err := os.Create("person.json")
+	file, err := os.Create("people.json")
 	if err != nil {
 		fmt.Println("Ошибка открытия файла:", err)
 		return
 	}
 	defer file.Close()
+
+	// Создаем JSON-кодировщик
 	encoder := json.NewEncoder(file)
-	err = encoder.Encode(person)
+
+	// Кодируем данные и записываем в файл
+	err = encoder.Encode(people)
 	if err != nil {
 		fmt.Println("Ошибка кодирования JSON:", err)
 		return
 	}
-	fmt.Println("Данные успешно записаны в файл person.json")
+
+	fmt.Println("Данные успешно записаны в файл people.json")
 }
