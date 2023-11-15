@@ -15,7 +15,6 @@ type Person struct {
 func main() {
 	people := Person{Name: "Иван", Age: 30, Title: "Инженер"}
 
-	// Открываем файл для записи
 	file, err := os.Create("people.json")
 	if err != nil {
 		fmt.Println("Ошибка открытия файла:", err)
@@ -23,10 +22,8 @@ func main() {
 	}
 	defer file.Close()
 
-	// Создаем JSON-кодировщик
 	encoder := json.NewEncoder(file)
 
-	// Кодируем данные и записываем в файл
 	err = encoder.Encode(people)
 	if err != nil {
 		fmt.Println("Ошибка кодирования JSON:", err)
